@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using ApplicationLogic;
+using DomainModel;
 
 namespace ContactCatalogApp.Forms
 {
@@ -11,9 +12,18 @@ namespace ContactCatalogApp.Forms
             InitializeComponent();
         }
 
-        private void AddPerson_Click(object sender, System.EventArgs e)
+        private void AddPerson_Click(object sender, EventArgs e)
         {
-            new AppCalls().CreatePerson();
+            var newPerson = new Person
+            {
+                FirstName = txtBoxFirstName.Text,
+                MiddleName = txtBoxMiddleName.Text,
+                LastName = txtBoxLastName.Text,
+                ContactType = txtBoxContactType.Text
+            };
+
+            new AppCalls().CreatePerson(newPerson);
+
             MessageBox.Show("Created new Person in Database");
         }
 

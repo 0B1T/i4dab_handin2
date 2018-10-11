@@ -6,14 +6,16 @@ namespace ApplicationLogic
 {
     public class AppCalls
     {
-        public void CreatePerson()
+        public void CreatePerson(Person newPerson)
         {
-            var ccdbUtil = new CCDBUtil();
+            new CCDBUtil().AddPersonToDB(ref newPerson);
 
-            var newPerson = new Person()
-                {FirstName = "John", MiddleName = "Romby", LastName = "Andersson", ContactType = "Private"};
+            //var ccdbUtil = new CCDBUtil();
 
-            ccdbUtil.AddPersonToDB(ref newPerson);
+            //var newPerson = new Person()
+            //    {FirstName = "John", MiddleName = "Romby", LastName = "Andersson", ContactType = "Private"};
+
+            //ccdbUtil.AddPersonToDB(ref newPerson);
         }
 
         public List<Person> ReadPerson()
